@@ -1,0 +1,73 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f6f8fb;
+  --foreground: #0f172a;
+  --card: #ffffff;
+  --muted: #64748b;
+  --edge: #e2e8f0;
+  --accent: #2563eb;
+  --up: #059669;
+  --down: #e11d48;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0f1d;
+    --foreground: #e6edf6;
+    --card: #111a2e;
+    --muted: #94a3b8;
+    --edge: #1e293b;
+    --accent: #60a5fa;
+    --up: #34d399;
+    --down: #fb7185;
+  }
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-muted: var(--muted);
+  --color-edge: var(--edge);
+  --color-accent: var(--accent);
+  --color-up: var(--up);
+  --color-down: var(--down);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background:
+    radial-gradient(1200px 600px at 100% -10%, color-mix(in oklab, var(--accent) 10%, transparent), transparent),
+    var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+}
+
+/* Shimmer used by loading skeletons. */
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.skeleton {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--edge);
+}
+
+.skeleton::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    color-mix(in oklab, var(--card) 70%, transparent),
+    transparent
+  );
+  animation: shimmer 1.6s infinite;
+}
