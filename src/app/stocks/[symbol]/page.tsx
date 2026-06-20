@@ -9,7 +9,6 @@ import { PriceChart } from "@/components/PriceChart";
 import { PriceHistoryTable } from "@/components/PriceHistoryTable";
 
 interface PageProps {
-  // Next.js 16: route params are async.
   params: Promise<{ symbol: string }>;
 }
 
