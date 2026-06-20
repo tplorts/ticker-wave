@@ -12,7 +12,7 @@ interface CompanyLogoProps {
 }
 
 /**
- * Renders a company's Clearbit logo, falling back to its ticker initials in a
+ * Renders a company's logo.dev logo, falling back to its ticker initials in a
  * tinted tile when the image is missing or fails to load.
  */
 export function CompanyLogo({

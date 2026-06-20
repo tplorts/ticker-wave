@@ -1,7 +1,7 @@
 export interface Stock {
   symbol: string;
   name: string;
-  /** Domain used to fetch a Clearbit logo (https://logo.clearbit.com/{domain}). */
+  /** Domain used to fetch a logo.dev logo (https://img.logo.dev/{domain}). */
   domain: string;
 }
 
@@ -34,7 +34,18 @@ export function findStock(symbol: string): Stock | undefined {
   return STOCKS.find((stock) => stock.symbol === normalized);
 }
 
-/** Build the Clearbit logo URL for a company domain. */
+/**
+ * logo.dev publishable key (pk_…). Exposed to the browser since logos are
+ * rendered client-side; publishable keys are designed to be public.
+ */
+const LOGODEV_TOKEN = process.env.NEXT_PUBLIC_LOGODEV_PUBLISHABLE_KEY ?? "";
+
+/**
+ * Build the logo.dev logo URL for a company domain. logo.dev requires a token;
+ * without one the request fails and CompanyLogo falls back to ticker initials.
+ */
 export function logoUrl(domain: string): string {
-  return `https://logo.clearbit.com/${domain}`;
+  const url = new URL(`https://img.logo.dev/${domain}`);
+  if (LOGODEV_TOKEN) url.searchParams.set("token", LOGODEV_TOKEN);
+  return url.toString();
 }
