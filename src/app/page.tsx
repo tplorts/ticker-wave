@@ -9,8 +9,8 @@ export default function HomePage() {
           Explore the market
         </h1>
         <p className="max-w-2xl text-muted">
-          A curated set of {STOCKS.length} tickers. Select any company to see its
-          overview, recent price history, and a chart of closing prices.
+          A curated set of {STOCKS.length} tickers. Select any company to see
+          its overview, recent price history, and a chart of closing prices.
         </p>
       </section>
 

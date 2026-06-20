@@ -62,9 +62,7 @@ export function PriceChart({ points }: PriceChartProps) {
   return (
     <section className="space-y-4 rounded-2xl border border-edge bg-card p-5 shadow-sm sm:p-6">
       <div className="flex items-baseline justify-between">
-        <h2 className="text-lg font-semibold tracking-tight">
-          Closing price
-        </h2>
+        <h2 className="text-lg font-semibold tracking-tight">Closing price</h2>
         <span className="text-xs text-muted">Last {data.length} sessions</span>
       </div>
 

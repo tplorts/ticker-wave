@@ -19,10 +19,18 @@ export function PriceHistoryTable({ points }: { points: PricePoint[] }) {
         <table className="w-full min-w-[34rem] border-collapse text-sm">
           <thead className="sticky top-0 z-10 bg-card text-muted">
             <tr className="border-b border-edge text-left">
-              <th scope="col" className="px-4 py-2.5 font-medium">Date</th>
-              <th scope="col" className="px-4 py-2.5 text-right font-medium">Close</th>
-              <th scope="col" className="px-4 py-2.5 text-right font-medium">Volume</th>
-              <th scope="col" className="px-4 py-2.5 text-right font-medium">% Change</th>
+              <th scope="col" className="px-4 py-2.5 font-medium">
+                Date
+              </th>
+              <th scope="col" className="px-4 py-2.5 text-right font-medium">
+                Close
+              </th>
+              <th scope="col" className="px-4 py-2.5 text-right font-medium">
+                Volume
+              </th>
+              <th scope="col" className="px-4 py-2.5 text-right font-medium">
+                % Change
+              </th>
             </tr>
           </thead>
           <tbody>
@@ -38,7 +46,14 @@ export function PriceHistoryTable({ points }: { points: PricePoint[] }) {
                     : change < 0
                       ? "text-down"
                       : "text-muted";
-              const arrow = change === null ? "" : change > 0 ? "▲ " : change < 0 ? "▼ " : "";
+              const arrow =
+                change === null
+                  ? ""
+                  : change > 0
+                    ? "▲ "
+                    : change < 0
+                      ? "▼ "
+                      : "";
 
               return (
                 <tr

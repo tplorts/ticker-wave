@@ -23,7 +23,10 @@ export function StockTile({ stock }: { stock: Stock }) {
       </p>
       <span className="mt-auto inline-flex items-center gap-1 text-xs font-medium text-accent opacity-0 transition-opacity group-hover:opacity-100">
         View details
-        <span aria-hidden="true" className="transition-transform group-hover:translate-x-0.5">
+        <span
+          aria-hidden="true"
+          className="transition-transform group-hover:translate-x-0.5"
+        >
           →
         </span>
       </span>

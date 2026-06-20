@@ -52,8 +52,8 @@ export default function RootLayout({
 
         <footer className="border-t border-edge">
           <div className="mx-auto w-full max-w-6xl px-4 py-6 text-center text-xs text-muted sm:px-6">
-            Ticker Wave · Data delayed and cached daily · For demonstration only,
-            not financial advice.
+            Ticker Wave · Data delayed and cached daily · For demonstration
+            only, not financial advice.
           </div>
         </footer>
       </body>

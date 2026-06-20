@@ -73,14 +73,16 @@ export const getDailyPrices = cache(
     const series = (json as DailyTimeSeriesResponse)?.["Time Series (Daily)"];
     if (!series || typeof series !== "object") return null;
 
-    const points: PricePoint[] = Object.entries(series).map(([date, quote]) => ({
-      date,
-      open: Number(quote["1. open"]),
-      high: Number(quote["2. high"]),
-      low: Number(quote["3. low"]),
-      close: Number(quote["4. close"]),
-      volume: Number(quote["5. volume"]),
-    }));
+    const points: PricePoint[] = Object.entries(series).map(
+      ([date, quote]) => ({
+        date,
+        open: Number(quote["1. open"]),
+        high: Number(quote["2. high"]),
+        low: Number(quote["3. low"]),
+        close: Number(quote["4. close"]),
+        volume: Number(quote["5. volume"]),
+      }),
+    );
 
     if (points.length === 0) return null;
 

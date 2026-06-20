@@ -16,7 +16,9 @@ export function naOrValue(value: string | number | null | undefined): string {
  * Formats a raw market-cap string (e.g. "3010000000000") into a human-readable
  * value like "$3.01T". Returns "N/A" when the input isn't a usable number.
  */
-export function formatMarketCap(value: string | number | null | undefined): string {
+export function formatMarketCap(
+  value: string | number | null | undefined,
+): string {
   if (value === null || value === undefined) return "N/A";
   const num = typeof value === "number" ? value : Number(String(value).trim());
   if (!Number.isFinite(num) || num <= 0) return "N/A";
@@ -37,13 +39,15 @@ export function formatMarketCap(value: string | number | null | undefined): stri
 
 /** Formats a share-volume number with thousands separators (e.g. 1,234,567). */
 export function formatVolume(value: number | null | undefined): string {
-  if (value === null || value === undefined || !Number.isFinite(value)) return "N/A";
+  if (value === null || value === undefined || !Number.isFinite(value))
+    return "N/A";
   return value.toLocaleString("en-US");
 }
 
 /** Formats a close price as USD currency (e.g. $123.45). */
 export function formatPrice(value: number | null | undefined): string {
-  if (value === null || value === undefined || !Number.isFinite(value)) return "N/A";
+  if (value === null || value === undefined || !Number.isFinite(value))
+    return "N/A";
   return value.toLocaleString("en-US", {
     style: "currency",
     currency: "USD",

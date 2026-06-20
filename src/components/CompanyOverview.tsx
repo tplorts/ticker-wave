@@ -41,7 +41,10 @@ export function CompanyOverview({
       )}
 
       <dl className="grid grid-cols-2 gap-x-6 gap-y-4 sm:grid-cols-3">
-        <Field label="Symbol" value={naOrValue(overview?.Symbol ?? fallbackSymbol)} />
+        <Field
+          label="Symbol"
+          value={naOrValue(overview?.Symbol ?? fallbackSymbol)}
+        />
         <Field label="Asset Type" value={naOrValue(overview?.AssetType)} />
         <Field label="Name" value={naOrValue(overview?.Name ?? fallbackName)} />
         <Field label="Exchange" value={naOrValue(overview?.Exchange)} />
