@@ -43,6 +43,7 @@ export function CompanyLogo({
       height={size}
       className={`rounded-xl bg-white object-contain ring-1 ring-edge ${className}`}
       onError={() => setFailed(true)}
+      unoptimized
     />
   );
 }
