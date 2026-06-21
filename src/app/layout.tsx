@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Geist, Geist_Mono } from "next/font/google";
+import { AuthorAttribution } from "@/components/AuthorAttribution";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -48,9 +49,12 @@ export default function RootLayout({
         </main>
 
         <footer className="border-t border-edge">
-          <div className="mx-auto w-full max-w-6xl px-4 py-6 text-center text-xs text-muted sm:px-6">
-            Ticker Wave · Powered by AlphaVantage · Data delayed and cached
-            daily · For demonstration only, not financial advice.
+          <div className="mx-auto flex w-full max-w-6xl flex-col items-center gap-2 px-4 py-6 text-center text-xs text-muted sm:px-6">
+            <p>
+              Ticker Wave · Powered by AlphaVantage · Data delayed and cached
+              daily · For demonstration only, not financial advice.
+            </p>
+            <AuthorAttribution />
           </div>
         </footer>
       </body>
