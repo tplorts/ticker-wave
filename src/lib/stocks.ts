@@ -42,7 +42,7 @@ export function findStock(symbol: string): Stock | undefined {
  * request fails and CompanyLogo falls back to ticker initials.
  */
 export function logoUrl(domain: string): string {
-  const token = env.NEXT_PUBLIC_LOGODEV_PUBLISHABLE_KEY;
+  const token = env.LOGODEV_PUBLISHABLE_KEY;
   const url = new URL(`https://img.logo.dev/${domain}`);
   if (token) url.searchParams.set("token", token);
   return url.toString();

@@ -19,7 +19,7 @@ const serverSchema = z.object({
 const clientSchema = z.object({
   // Optional publishable key (pk_…); empty means "no token", and CompanyLogo
   // degrades to ticker initials.
-  NEXT_PUBLIC_LOGODEV_PUBLISHABLE_KEY: z.string().default(""),
+  LOGODEV_PUBLISHABLE_KEY: z.string().default(""),
 });
 
 const serverEnv =
@@ -28,8 +28,7 @@ const serverEnv =
     : ({} as z.infer<typeof serverSchema>);
 
 const clientEnv = clientSchema.parse({
-  NEXT_PUBLIC_LOGODEV_PUBLISHABLE_KEY:
-    process.env.NEXT_PUBLIC_LOGODEV_PUBLISHABLE_KEY,
+  LOGODEV_PUBLISHABLE_KEY: process.env.NEXT_PUBLIC_LOGODEV_PUBLISHABLE_KEY,
 });
 
 export const env = { ...serverEnv, ...clientEnv };
