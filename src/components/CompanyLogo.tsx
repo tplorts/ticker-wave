@@ -32,6 +32,7 @@ export function CompanyLogo({
           className,
         )}
         style={{ width: size, height: size, fontSize: size * 0.34 }}
+        role="img"
         aria-label={`${symbol} logo`}
       >
         {symbol.slice(0, 4)}
