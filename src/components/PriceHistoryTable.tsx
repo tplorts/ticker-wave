@@ -6,8 +6,8 @@ import { SectionCard } from "./SectionCard";
 export function PriceHistoryTable({ points }: { points: PricePoint[] }) {
   return (
     <SectionCard title="Price history" meta={`${points.length} trading days`}>
-      <div className="max-h-112 overflow-auto rounded-lg border border-edge">
-        <table className="w-full min-w-136 border-collapse text-sm">
+      <div className="max-h-price-table-viewport overflow-auto rounded-lg border border-edge">
+        <table className="w-full min-w-price-table-min border-collapse text-sm">
           <thead className="sticky top-0 z-10 bg-card text-muted">
             <tr className="border-b border-edge text-left">
               <th scope="col" className="px-4 py-2.5 font-medium">
@@ -33,7 +33,7 @@ export function PriceHistoryTable({ points }: { points: PricePoint[] }) {
               return (
                 <tr
                   key={point.date}
-                  className="border-b border-edge/60 last:border-0 odd:bg-foreground/1.5"
+                  className="border-b border-edge/60 last:border-0 odd:bg-row-stripe"
                 >
                   <td className="px-4 py-2.5 whitespace-nowrap">
                     {formatDate(point.date)}

@@ -7,6 +7,10 @@
   --muted: #64748b;
   --edge: #e2e8f0;
   --accent: #2563eb;
+  /* Text/icon color on accent-colored fills; white reads on both accent shades. */
+  --accent-fg: #ffffff;
+  --warning: #f59e0b;
+  --warning-fg: #92400e;
   --up: #059669;
   --down: #e11d48;
 }
@@ -19,6 +23,8 @@
     --muted: #94a3b8;
     --edge: #1e293b;
     --accent: #60a5fa;
+    --warning: #fbbf24;
+    --warning-fg: #fcd34d;
     --up: #34d399;
     --down: #fb7185;
   }
@@ -31,10 +37,19 @@
   --color-muted: var(--muted);
   --color-edge: var(--edge);
   --color-accent: var(--accent);
+  --color-accent-fg: var(--accent-fg);
+  --color-warning: var(--warning);
+  --color-warning-fg: var(--warning-fg);
   --color-up: var(--up);
   --color-down: var(--down);
+  /* Subtle zebra striping for table rows (was odd:bg-foreground/1.5). */
+  --color-row-stripe: color-mix(in oklab, var(--foreground) 1.5%, transparent);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
+  /* Price-history table sizing (named so the magic numbers self-document). */
+  --spacing-price-table-viewport: 28rem; /* scroll height, was max-h-112 */
+  --spacing-price-table-min: 34rem; /* min width before h-scroll, was min-w-136 */
 }
 
 body {

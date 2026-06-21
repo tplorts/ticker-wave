@@ -33,7 +33,7 @@ export function CompanyOverview({
   return (
     <SectionCard title="Company overview">
       {!overview && (
-        <p className="rounded-lg border border-amber-300/40 bg-amber-50 px-3 py-2 text-sm text-amber-800 dark:border-amber-400/20 dark:bg-amber-500/10 dark:text-amber-300">
+        <p className="rounded-lg border border-warning/30 bg-warning/10 px-3 py-2 text-sm text-warning-fg">
           Company overview is currently unavailable (the AlphaVantage free tier
           allows ~25 requests/day). Showing N/A where data is missing.
         </p>

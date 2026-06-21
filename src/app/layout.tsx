@@ -34,7 +34,7 @@ export default function RootLayout({
         <header className="sticky top-0 z-10 border-b border-edge bg-card/80 backdrop-blur">
           <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-4 py-4 sm:px-6">
             <Link href="/" className="group flex items-center gap-2.5">
-              <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-accent text-base font-bold text-white shadow-sm transition-transform group-hover:scale-105">
+              <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-accent text-base font-bold text-accent-fg shadow-sm transition-transform group-hover:scale-105">
                 ~
               </span>
               <span className="text-lg font-semibold tracking-tight">
