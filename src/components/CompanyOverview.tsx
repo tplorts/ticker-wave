@@ -9,16 +9,29 @@ interface CompanyOverviewProps {
   fallbackName: string;
 }
 
-function Field({ label, value }: { label: string; value: string }) {
-  const isNA = value === NA;
+function Field({
+  label,
+  value,
+  multiline = false,
+}: {
+  label: string;
+  value: string;
+  /** Render the value as flowing prose (e.g. a description) rather than a
+   *  single emphasized line. */
+  multiline?: boolean;
+}) {
+  const valueClass =
+    value === NA
+      ? "text-sm text-muted/70"
+      : multiline
+        ? "text-sm leading-relaxed text-foreground/90"
+        : "text-sm font-medium";
   return (
     <div className="space-y-1">
       <dt className="text-xs font-medium uppercase tracking-wide text-muted">
         {label}
       </dt>
-      <dd className={isNA ? "text-sm text-muted/70" : "text-sm font-medium"}>
-        {value}
-      </dd>
+      <dd className={valueClass}>{value}</dd>
     </div>
   );
 }
@@ -55,20 +68,9 @@ export function CompanyOverview({
         />
       </dl>
 
-      <div className="space-y-1">
-        <dt className="text-xs font-medium uppercase tracking-wide text-muted">
-          Description
-        </dt>
-        <dd
-          className={
-            description === NA
-              ? "text-sm text-muted/70"
-              : "text-sm leading-relaxed text-foreground/90"
-          }
-        >
-          {description}
-        </dd>
-      </div>
+      <dl>
+        <Field label="Description" value={description} multiline />
+      </dl>
     </SectionCard>
   );
 }
