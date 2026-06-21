@@ -12,7 +12,9 @@
     "format": "prettier src",
     "format:check": "pnpm format --check",
     "format:write": "pnpm format --write",
-    "lint": "eslint"
+    "lint": "eslint",
+    "test": "vitest run",
+    "test:watch": "vitest"
   },
   "dependencies": {
     "next": "16.2.9",
@@ -29,6 +31,7 @@
     "eslint-config-next": "16.2.9",
     "prettier": "3.8.4",
     "tailwindcss": "^4",
-    "typescript": "^6"
+    "typescript": "^6",
+    "vitest": "^4.1.9"
   }
 }
