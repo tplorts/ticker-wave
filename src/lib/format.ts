@@ -1,3 +1,6 @@
+/** Sentinel the formatters return when a value is missing or unusable. */
+export const NA = "N/A";
+
 /** Values AlphaVantage uses to signal "no data" for a field. */
 const EMPTY_VALUES = new Set(["", "none", "-", "n/a", "null", "undefined"]);
 
@@ -6,9 +9,9 @@ const EMPTY_VALUES = new Set(["", "none", "-", "n/a", "null", "undefined"]);
  * placeholder empties.
  */
 export function naOrValue(value: string | number | null | undefined): string {
-  if (value === null || value === undefined) return "N/A";
+  if (value === null || value === undefined) return NA;
   const str = String(value).trim();
-  if (str === "" || EMPTY_VALUES.has(str.toLowerCase())) return "N/A";
+  if (str === "" || EMPTY_VALUES.has(str.toLowerCase())) return NA;
   return str;
 }
 
@@ -19,9 +22,9 @@ export function naOrValue(value: string | number | null | undefined): string {
 export function formatMarketCap(
   value: string | number | null | undefined,
 ): string {
-  if (value === null || value === undefined) return "N/A";
+  if (value === null || value === undefined) return NA;
   const num = typeof value === "number" ? value : Number(String(value).trim());
-  if (!Number.isFinite(num) || num <= 0) return "N/A";
+  if (!Number.isFinite(num) || num <= 0) return NA;
 
   // Compacted values (≥ $1K) carry two decimals (e.g. "$2.50B"); sub-thousand
   // values render as whole dollars (e.g. "$999").
@@ -38,14 +41,14 @@ export function formatMarketCap(
 /** Formats a share-volume number with thousands separators (e.g. 1,234,567). */
 export function formatVolume(value: number | null | undefined): string {
   if (value === null || value === undefined || !Number.isFinite(value))
-    return "N/A";
+    return NA;
   return value.toLocaleString("en-US");
 }
 
 /** Formats a close price as USD currency (e.g. $123.45). */
 export function formatPrice(value: number | null | undefined): string {
   if (value === null || value === undefined || !Number.isFinite(value))
-    return "N/A";
+    return NA;
   return value.toLocaleString("en-US", {
     style: "currency",
     currency: "USD",

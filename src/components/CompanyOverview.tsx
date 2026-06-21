@@ -1,5 +1,5 @@
 import type { CompanyOverview as Overview } from "@/types/alphavantage";
-import { formatMarketCap, naOrValue } from "@/lib/format";
+import { formatMarketCap, naOrValue, NA } from "@/lib/format";
 import { SectionCard } from "./SectionCard";
 
 interface CompanyOverviewProps {
@@ -10,7 +10,7 @@ interface CompanyOverviewProps {
 }
 
 function Field({ label, value }: { label: string; value: string }) {
-  const isNA = value === "N/A";
+  const isNA = value === NA;
   return (
     <div className="space-y-1">
       <dt className="text-xs font-medium uppercase tracking-wide text-muted">
@@ -61,7 +61,7 @@ export function CompanyOverview({
         </dt>
         <dd
           className={
-            description === "N/A"
+            description === NA
               ? "text-sm text-muted/70"
               : "text-sm leading-relaxed text-foreground/90"
           }
