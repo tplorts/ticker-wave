@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
+import { cn } from "@/lib/cn";
 import { logoUrl } from "@/lib/stocks";
 
 interface CompanyLogoProps {
@@ -26,7 +27,10 @@ export function CompanyLogo({
   if (failed) {
     return (
       <div
-        className={`flex items-center justify-center rounded-xl bg-accent/10 font-semibold text-accent ${className}`}
+        className={cn(
+          "flex items-center justify-center rounded-xl bg-accent/10 font-semibold text-accent",
+          className,
+        )}
         style={{ width: size, height: size, fontSize: size * 0.34 }}
         aria-label={`${symbol} logo`}
       >
@@ -41,7 +45,10 @@ export function CompanyLogo({
       alt={`${symbol} logo`}
       width={size}
       height={size}
-      className={`rounded-xl bg-white object-contain ring-1 ring-edge ${className}`}
+      className={cn(
+        "rounded-xl bg-white object-contain ring-1 ring-edge",
+        className,
+      )}
       onError={() => setFailed(true)}
       unoptimized
     />

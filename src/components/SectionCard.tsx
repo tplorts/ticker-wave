@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { cn } from "@/lib/cn";
 
 interface SectionCardProps {
   /** Optional heading rendered as an <h2> at the top of the card. */
@@ -21,7 +22,10 @@ export function SectionCard({
 }: SectionCardProps) {
   return (
     <section
-      className={`space-y-4 rounded-2xl border border-edge bg-card p-5 shadow-sm sm:p-6 ${className}`}
+      className={cn(
+        "space-y-4 rounded-2xl border border-edge bg-card p-5 shadow-sm sm:p-6",
+        className,
+      )}
     >
       {title && (
         <div className="flex items-baseline justify-between">

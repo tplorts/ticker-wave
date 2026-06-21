@@ -1,3 +1,5 @@
+import { cn } from "@/lib/cn";
+
 export function AuthorAttribution() {
   return (
     <p>
@@ -22,7 +24,10 @@ function ExternalLink({
     <a
       target="_blank"
       rel="noopener noreferrer"
-      className={`underline-offset-4 transition-colors hover:text-accent hover:underline ${className}`}
+      className={cn(
+        "underline-offset-4 transition-colors hover:text-accent hover:underline",
+        className,
+      )}
       {...props}
     >
       {children}
