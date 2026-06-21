@@ -6,15 +6,11 @@ import {
   formatVolume,
   pctChange,
 } from "@/lib/format";
+import { SectionCard } from "./SectionCard";
 
 export function PriceHistoryTable({ points }: { points: PricePoint[] }) {
   return (
-    <section className="space-y-4 rounded-2xl border border-edge bg-card p-5 shadow-sm sm:p-6">
-      <div className="flex items-baseline justify-between">
-        <h2 className="text-lg font-semibold tracking-tight">Price history</h2>
-        <span className="text-xs text-muted">{points.length} trading days</span>
-      </div>
-
+    <SectionCard title="Price history" meta={`${points.length} trading days`}>
       <div className="max-h-[28rem] overflow-auto rounded-lg border border-edge">
         <table className="w-full min-w-[34rem] border-collapse text-sm">
           <thead className="sticky top-0 z-10 bg-card text-muted">
@@ -81,6 +77,6 @@ export function PriceHistoryTable({ points }: { points: PricePoint[] }) {
           </tbody>
         </table>
       </div>
-    </section>
+    </SectionCard>
   );
 }

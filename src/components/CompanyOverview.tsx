@@ -1,5 +1,6 @@
 import type { CompanyOverview as Overview } from "@/types/alphavantage";
 import { formatMarketCap, naOrValue } from "@/lib/format";
+import { SectionCard } from "./SectionCard";
 
 interface CompanyOverviewProps {
   overview: Overview | null;
@@ -30,9 +31,7 @@ export function CompanyOverview({
   const description = naOrValue(overview?.Description);
 
   return (
-    <section className="space-y-4 rounded-2xl border border-edge bg-card p-5 shadow-sm sm:p-6">
-      <h2 className="text-lg font-semibold tracking-tight">Company overview</h2>
-
+    <SectionCard title="Company overview">
       {!overview && (
         <p className="rounded-lg border border-amber-300/40 bg-amber-50 px-3 py-2 text-sm text-amber-800 dark:border-amber-400/20 dark:bg-amber-500/10 dark:text-amber-300">
           Company overview is currently unavailable (the AlphaVantage free tier
@@ -70,6 +69,6 @@ export function CompanyOverview({
           {description}
         </dd>
       </div>
-    </section>
+    </SectionCard>
   );
 }

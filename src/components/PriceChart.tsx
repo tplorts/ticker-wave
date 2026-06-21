@@ -11,6 +11,7 @@ import {
 } from "recharts";
 import type { PricePoint } from "@/types/alphavantage";
 import { formatDate, formatPrice } from "@/lib/format";
+import { SectionCard } from "./SectionCard";
 
 interface PriceChartProps {
   points: PricePoint[];
@@ -60,12 +61,7 @@ export function PriceChart({ points }: PriceChartProps) {
   const pad = (max - min) * 0.08 || 1;
 
   return (
-    <section className="space-y-4 rounded-2xl border border-edge bg-card p-5 shadow-sm sm:p-6">
-      <div className="flex items-baseline justify-between">
-        <h2 className="text-lg font-semibold tracking-tight">Closing price</h2>
-        <span className="text-xs text-muted">Last {data.length} sessions</span>
-      </div>
-
+    <SectionCard title="Closing price" meta={`Last ${data.length} sessions`}>
       <div className="h-64 w-full sm:h-72">
         <ResponsiveContainer width="100%" height="100%">
           <AreaChart
@@ -120,6 +116,6 @@ export function PriceChart({ points }: PriceChartProps) {
           </AreaChart>
         </ResponsiveContainer>
       </div>
-    </section>
+    </SectionCard>
   );
 }
