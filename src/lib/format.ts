@@ -96,3 +96,13 @@ export function formatDate(iso: string): string {
     day: "numeric",
   });
 }
+
+/**
+ * Formats an ISO date (YYYY-MM-DD) compactly as "M/D" with no leading zeros
+ * (e.g. "6/9"). Used for dense axis ticks. Splits the string directly to stay
+ * timezone-agnostic.
+ */
+export function formatShortDate(iso: string): string {
+  const [, month, day] = iso.split("-");
+  return `${Number(month)}/${Number(day)}`;
+}

@@ -4,6 +4,7 @@ import {
   formatMarketCap,
   formatPct,
   formatPrice,
+  formatShortDate,
   formatVolume,
   naOrValue,
   pctChange,
@@ -159,5 +160,13 @@ describe("formatDate", () => {
   it("returns the original string when it is not a valid date", () => {
     expect(formatDate("not-a-date")).toBe("not-a-date");
     expect(formatDate("")).toBe("");
+  });
+});
+
+describe("formatShortDate", () => {
+  it("formats an ISO date as M/D without leading zeros", () => {
+    expect(formatShortDate("2026-06-09")).toBe("6/9");
+    expect(formatShortDate("2026-01-01")).toBe("1/1");
+    expect(formatShortDate("2026-12-25")).toBe("12/25");
   });
 });

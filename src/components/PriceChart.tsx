@@ -10,7 +10,7 @@ import {
   YAxis,
 } from "recharts";
 import type { PricePoint } from "@/types/alphavantage";
-import { formatDate, formatPrice } from "@/lib/format";
+import { formatDate, formatPrice, formatShortDate } from "@/lib/format";
 import { SectionCard } from "./SectionCard";
 
 interface PriceChartProps {
@@ -41,12 +41,6 @@ function ChartTooltip({
       <p className="text-sm font-semibold">{formatPrice(close)}</p>
     </div>
   );
-}
-
-function shortDate(iso: string): string {
-  // YYYY-MM-DD -> M/D
-  const [, month, day] = iso.split("-");
-  return `${Number(month)}/${Number(day)}`;
 }
 
 export function PriceChart({ points }: PriceChartProps) {
@@ -89,7 +83,7 @@ export function PriceChart({ points }: PriceChartProps) {
             />
             <XAxis
               dataKey="date"
-              tickFormatter={shortDate}
+              tickFormatter={formatShortDate}
               minTickGap={32}
               tick={{ fill: "var(--color-muted)", fontSize: 11 }}
               axisLine={{ stroke: "var(--color-edge)" }}
