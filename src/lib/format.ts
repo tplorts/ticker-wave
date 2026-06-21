@@ -23,18 +23,16 @@ export function formatMarketCap(
   const num = typeof value === "number" ? value : Number(String(value).trim());
   if (!Number.isFinite(num) || num <= 0) return "N/A";
 
-  const units: Array<[number, string]> = [
-    [1e12, "T"],
-    [1e9, "B"],
-    [1e6, "M"],
-    [1e3, "K"],
-  ];
-  for (const [threshold, suffix] of units) {
-    if (num >= threshold) {
-      return `$${(num / threshold).toFixed(2)}${suffix}`;
-    }
-  }
-  return `$${num.toFixed(0)}`;
+  // Compacted values (≥ $1K) carry two decimals (e.g. "$2.50B"); sub-thousand
+  // values render as whole dollars (e.g. "$999").
+  const fractionDigits = num < 1e3 ? 0 : 2;
+  return new Intl.NumberFormat("en-US", {
+    notation: "compact",
+    style: "currency",
+    currency: "USD",
+    minimumFractionDigits: fractionDigits,
+    maximumFractionDigits: fractionDigits,
+  }).format(num);
 }
 
 /** Formats a share-volume number with thousands separators (e.g. 1,234,567). */
@@ -79,8 +77,13 @@ export function pctChange(
 /** Formats a percentage with a sign and two decimals (e.g. "+1.23%"). */
 export function formatPct(value: number | null): string {
   if (value === null) return "—";
-  const sign = value > 0 ? "+" : "";
-  return `${sign}${value.toFixed(2)}%`;
+  // `value` is already in percent units, so scale back to a ratio for `style: "percent"`.
+  return new Intl.NumberFormat("en-US", {
+    style: "percent",
+    signDisplay: "exceptZero",
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  }).format(value / 100);
 }
 
 /** Formats an ISO date (YYYY-MM-DD) as e.g. "Jun 19, 2026". */
