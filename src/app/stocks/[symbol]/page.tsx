@@ -3,8 +3,10 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { findStock } from "@/lib/stocks";
 import { getCompanyOverview, getDailyPrices } from "@/lib/alphavantage";
+import { RATE_LIMIT_NOTE } from "@/lib/copy";
 import { CompanyLogo } from "@/components/CompanyLogo";
 import { CompanyOverview } from "@/components/CompanyOverview";
+import { EmptyState } from "@/components/EmptyState";
 import { PriceChart } from "@/components/PriceChart";
 import { PriceHistoryTable } from "@/components/PriceHistoryTable";
 
@@ -71,12 +73,10 @@ export default async function StockDetailsPage({ params }: PageProps) {
           <PriceHistoryTable points={prices} />
         </>
       ) : (
-        <section className="rounded-2xl border border-edge bg-card p-6 text-center shadow-sm">
-          <p className="text-sm text-muted">
-            Price history is currently unavailable. The AlphaVantage free tier
-            allows roughly 25 requests per day — please try again later.
-          </p>
-        </section>
+        <EmptyState>
+          Price history is currently unavailable. {RATE_LIMIT_NOTE} Please try
+          again later.
+        </EmptyState>
       )}
     </div>
   );

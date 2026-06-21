@@ -1,4 +1,5 @@
 import type { CompanyOverview as Overview } from "@/types/alphavantage";
+import { RATE_LIMIT_NOTE } from "@/lib/copy";
 import { formatMarketCap, naOrValue, NA } from "@/lib/format";
 import { SectionCard } from "./SectionCard";
 
@@ -47,8 +48,8 @@ export function CompanyOverview({
     <SectionCard title="Company overview">
       {!overview && (
         <p className="rounded-lg border border-warning/30 bg-warning/10 px-3 py-2 text-sm text-warning-fg">
-          Company overview is currently unavailable (the AlphaVantage free tier
-          allows ~25 requests/day). Showing N/A where data is missing.
+          Company overview is currently unavailable. {RATE_LIMIT_NOTE} Showing{" "}
+          {NA} where data is missing.
         </p>
       )}
 
