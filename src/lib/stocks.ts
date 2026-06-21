@@ -1,3 +1,5 @@
+import { env } from "@/env";
+
 export interface Stock {
   symbol: string;
   name: string;
@@ -35,17 +37,13 @@ export function findStock(symbol: string): Stock | undefined {
 }
 
 /**
- * logo.dev publishable key (pk_…). Exposed to the browser since logos are
- * rendered client-side; publishable keys are designed to be public.
- */
-const LOGODEV_TOKEN = process.env.NEXT_PUBLIC_LOGODEV_PUBLISHABLE_KEY ?? "";
-
-/**
- * Build the logo.dev logo URL for a company domain. logo.dev requires a token;
- * without one the request fails and CompanyLogo falls back to ticker initials.
+ * Build the logo.dev logo URL for a company domain. logo.dev requires a token
+ * (a publishable pk_… key, safe to expose to the browser); without one the
+ * request fails and CompanyLogo falls back to ticker initials.
  */
 export function logoUrl(domain: string): string {
+  const token = env.NEXT_PUBLIC_LOGODEV_PUBLISHABLE_KEY;
   const url = new URL(`https://img.logo.dev/${domain}`);
-  if (LOGODEV_TOKEN) url.searchParams.set("token", LOGODEV_TOKEN);
+  if (token) url.searchParams.set("token", token);
   return url.toString();
 }

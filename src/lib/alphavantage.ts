@@ -1,4 +1,5 @@
 import { cache } from "react";
+import { env } from "@/env";
 import type {
   CompanyOverview,
   DailyTimeSeriesResponse,
@@ -11,9 +12,10 @@ const BASE_URL = "https://www.alphavantage.co/query";
 const REVALIDATE_SECONDS = 86_400;
 
 function buildUrl(params: Record<string, string>): string {
-  // Fall back to the public "demo" key (works for IBM) if none is configured.
-  const apikey = process.env.ALPHAVANTAGE_API_KEY || "demo";
-  const search = new URLSearchParams({ ...params, apikey });
+  const search = new URLSearchParams({
+    ...params,
+    apikey: env.ALPHAVANTAGE_API_KEY,
+  });
   return `${BASE_URL}?${search.toString()}`;
 }
 
