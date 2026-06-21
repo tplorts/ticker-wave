@@ -1,4 +1,3 @@
-/** A dual-ring spinner using the accent color. */
 export function Spinner({ size = 24 }: { size?: number }) {
   return (
     <span
