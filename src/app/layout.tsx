@@ -38,7 +38,7 @@ export default function RootLayout({
                 ~
               </span>
               <span className="text-lg font-semibold tracking-tight">
-                Ticker<span className="text-accent">Wave</span>
+                Ticker<span className="text-accent-2">Wave</span>
               </span>
             </Link>
           </div>
