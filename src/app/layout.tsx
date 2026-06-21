@@ -40,9 +40,6 @@ export default function RootLayout({
                 Ticker<span className="text-accent">Wave</span>
               </span>
             </Link>
-            <span className="text-xs font-medium text-muted">
-              Powered by AlphaVantage
-            </span>
           </div>
         </header>
 
@@ -52,8 +49,8 @@ export default function RootLayout({
 
         <footer className="border-t border-edge">
           <div className="mx-auto w-full max-w-6xl px-4 py-6 text-center text-xs text-muted sm:px-6">
-            Ticker Wave · Data delayed and cached daily · For demonstration
-            only, not financial advice.
+            Ticker Wave · Powered by AlphaVantage · Data delayed and cached
+            daily · For demonstration only, not financial advice.
           </div>
         </footer>
       </body>
