@@ -1,11 +1,6 @@
 import type { PricePoint } from "@/types/alphavantage";
-import {
-  formatDate,
-  formatPct,
-  formatPrice,
-  formatVolume,
-  pctChange,
-} from "@/lib/format";
+import { formatDate, formatPrice, formatVolume, pctChange } from "@/lib/format";
+import { PercentChange } from "./PercentChange";
 import { SectionCard } from "./SectionCard";
 
 export function PriceHistoryTable({ points }: { points: PricePoint[] }) {
@@ -34,22 +29,6 @@ export function PriceHistoryTable({ points }: { points: PricePoint[] }) {
               // Data is newest-first, so the previous trading day is the next row.
               const previous = points[i + 1];
               const change = pctChange(point.close, previous?.close);
-              const changeClass =
-                change === null
-                  ? "text-muted"
-                  : change > 0
-                    ? "text-up"
-                    : change < 0
-                      ? "text-down"
-                      : "text-muted";
-              const arrow =
-                change === null
-                  ? ""
-                  : change > 0
-                    ? "▲ "
-                    : change < 0
-                      ? "▼ "
-                      : "";
 
               return (
                 <tr
@@ -65,11 +44,8 @@ export function PriceHistoryTable({ points }: { points: PricePoint[] }) {
                   <td className="px-4 py-2.5 text-right tabular-nums text-muted">
                     {formatVolume(point.volume)}
                   </td>
-                  <td
-                    className={`px-4 py-2.5 text-right font-medium tabular-nums ${changeClass}`}
-                  >
-                    {arrow}
-                    {formatPct(change)}
+                  <td className="px-4 py-2.5 text-right tabular-nums">
+                    <PercentChange value={change} />
                   </td>
                 </tr>
               );
